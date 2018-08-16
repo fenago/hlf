@@ -1,0 +1,85 @@
+/**
+ * A business network where University stores authentic Certificates and makes it avaible for verifiers to check if information produced to them are genuine
+ */
+
+namespace org.gryphon.casestudy.university
+
+
+/**
+ * Digital Certificate Asset
+ */
+asset Certificate identified by certificateId {
+  o String certificateId
+  --> College college
+  --> Student issuedTo
+  --> Program program
+  o String issuedBy
+  o DateTime issuedDate
+  o DateTime validUpto
+  o String currentStatus
+  o String metaData
+}
+
+/**
+ * An abstract for all other intermediate assets
+ */
+abstract asset assetBase {
+    o String memberId    
+    o String name
+}
+
+asset Program identified by memberId extends assetBase {
+}
+
+
+abstract participant MemberParticipant {
+    o String memberId    
+    o String name
+}
+
+participant University identified by memberId extends MemberParticipant {
+}
+
+participant Student identified by memberId extends MemberParticipant {
+    o String surname
+    o DateTime dob      
+}
+
+participant College identified by memberId extends MemberParticipant {
+}
+
+participant Verifier identified by memberId extends MemberParticipant {
+}
+
+transaction issueCertificate {
+    o Asset Certificate
+}
+
+transaction requestAffiliation {
+    o String name
+}
+
+transaction enrollProgram {
+    o String name
+}
+
+transaction enrollStudent {
+    o String name
+}
+
+transaction verifyCertificate {
+    o String certificateId
+}
+
+transaction searchCertificatesByID {
+    o String enrollmentId
+}
+
+event CerticateIssued {
+    o String certificateId
+}
+
+event StudentEnrolled {
+    o String studentID
+}
+

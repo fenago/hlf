@@ -1,0 +1,21 @@
+/**
+ * Write your model definitions here
+ */
+
+
+namespace org.gryphon.casestudy.university
+
+/**
+ * Digital Certificate Asset
+ */
+asset Certificate identified by certificateId {
+  o String certificateId
+  o String issuedTo
+  o String programName
+  o DateTime issuedDate
+}
+
+transaction issueCertificate {
+  o String studentName
+  o String programName
+}

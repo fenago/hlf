@@ -1,0 +1,11 @@
+{
+  "name": "building_models",
+  "version": "0.0.1",
+  "description": "Creating models for our university example",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "author": "Ernesto",
+  "email": "mustafa@kmindz.in",
+  "license": "GPL 1.0"
+}
